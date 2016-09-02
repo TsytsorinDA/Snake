@@ -7,9 +7,9 @@ namespace Snake
 {
     class Point
     {
-        private int x;
-        private int y;
-        private char sym;
+        public int x;
+        public int y;
+        public char sym;
 
         public Point()
         {
