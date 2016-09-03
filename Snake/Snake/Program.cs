@@ -9,29 +9,10 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            List<char> listchar = new List<char>();
-            listchar.Add('@');
-            listchar.Add('#');
-            listchar.Add('$');
-            listchar.Add('%');
-
-            int x = 0;
-            int y = 1;
-
-            List<Point> listpoint = new List<Point>();
-
-            foreach (char i in listchar)
-            {
-                listpoint.Add(new Point(x, y, i));
-                x++;
-                y++;
-            }
-
-            foreach (Point i in listpoint)
-            {
-                i.Draw();
-            }
-
+            HorizontalLine Hline = new HorizontalLine(5, 10, 8, '*');
+            Hline.Drow();
+            VerticalLine Vline = new VerticalLine(8, 13, 5, '*');
+            Vline.Drow();
 
             Console.ReadKey();
         }
