@@ -9,7 +9,19 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello word");
+            Console.SetWindowSize(80, 25);
+
+            Console.SetBufferSize(80, 25);
+
+            HorizontalLine Hline = new HorizontalLine(0, 78, 0, '*');
+            Hline.Drow();
+            Hline = new HorizontalLine(0, 78, 24, '*');
+            Hline.Drow();
+            VerticalLine Vline = new VerticalLine(0, 24, 0, '*');
+            Vline.Drow();
+            Vline = new VerticalLine(0, 24, 78, '*');
+            Vline.Drow();
+
             Console.ReadKey();
         }
     }
