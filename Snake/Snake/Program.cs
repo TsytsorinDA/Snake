@@ -22,6 +22,10 @@ namespace Snake
             Vline = new VerticalLine(0, 24, 78, '*');
             Vline.Drow();
 
+
+            Snake snake = new Snake(new Point(78 / 2, 24 / 2, '+'), 4, Direction.Down);
+            snake.Drow();
+
             Console.ReadKey();
         }
     }
