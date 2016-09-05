@@ -14,27 +14,40 @@ namespace Snake
 
             Console.SetBufferSize(80, 25);
 
-            HorizontalLine Hline = new HorizontalLine(0, 78, 0, '*');
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            HorizontalLine Hline = new HorizontalLine(0, 78, 0, '+');
             Hline.Drow();
-            Hline = new HorizontalLine(0, 78, 24, '*');
+            Hline = new HorizontalLine(0, 78, 24, '+');
             Hline.Drow();
-            VerticalLine Vline = new VerticalLine(0, 24, 0, '*');
+            VerticalLine Vline = new VerticalLine(0, 24, 0, '+');
             Vline.Drow();
-            Vline = new VerticalLine(0, 24, 78, '*');
+            Vline = new VerticalLine(0, 24, 78, '+');
             Vline.Drow();
 
 
-            Snake snake = new Snake(new Point(78 / 2, 24 / 2, '+'), 4, Direction.Down);
+            Snake snake = new Snake(new Point(78 / 2, 24 / 2, '*'), 4, Direction.Down);
             snake.Drow();
 
-            while(true)
+            FoodCreator foodcreator = new FoodCreator(80, 25, '$');
+            Point food = foodcreator.CreateFood(snake.GetSnake());
+            food.Draw();
+
+            while (true)
             {
-                if(Console.KeyAvailable)
+                if (snake.Eat(food))
+                {
+                    food = foodcreator.CreateFood(snake.GetSnake());
+                    food.Draw();
+                }
+
+
+                if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
-                Thread.Sleep(150);
+                Thread.Sleep(200);
                 snake.Move();
             }
         }

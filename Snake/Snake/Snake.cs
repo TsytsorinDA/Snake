@@ -34,9 +34,9 @@ namespace Snake
         public Point GetNextPoint()
         {
             Point head = pList.Last();
-            Point newPoint = new Point(head);
-            newPoint.Move(1, m_direction);
-            return newPoint;
+            Point NextPoint = new Point(head);
+            NextPoint.Move(1, m_direction);
+            return NextPoint;
         }
 
         internal void HandleKey(ConsoleKey key)
@@ -57,6 +57,29 @@ namespace Snake
             {
                 m_direction = Direction.Down;
             }
+        }
+        public bool Eat(Point food)
+        {
+            bool res = false;
+            Point head = pList.Last();
+            //Point CurrentPoint = pList.Last();
+            //if((CurrentPoint.m_x == food.m_x - 1) || (CurrentPoint.m_x == food.m_x + 1) || (CurrentPoint.m_y == food.m_y - 1) || (CurrentPoint.m_y == food.m_y + 1))
+            //{
+
+            //}
+            if (head.IsHit(food))
+            {
+                head.Draw();
+                food.m_sym = head.m_sym;
+                pList.Add(food);
+                return true;
+            }
+
+            return res;
+        }
+        public List<Point> GetSnake()
+        {
+            return pList;
         }
     }
 }
